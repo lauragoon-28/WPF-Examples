@@ -27,7 +27,27 @@ namespace _9_1
             //TextBox txt1 = new TextBox();
             //txt1.Text = "Hello World";
 
+            lbloutput.Visibility = Visibility.Hidden;
 
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            string dob = txtDOB.Text;
+            string name = txtName.Text;
+
+            DateTime birthdate = Convert.ToDateTime(dob);
+            TimeSpan age = DateTime.Now - birthdate;
+
+            //MessageBox.Show((age.TotalDays / 365).ToString());
+            double old = age.TotalDays / 365;
+            lbloutput.Content = $"Hello {name}, you are {old.ToString("N2")} years old!!";
+            lbloutput.Visibility = Visibility.Visible;
         }
     }
 }
